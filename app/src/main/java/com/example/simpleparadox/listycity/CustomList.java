@@ -62,4 +62,8 @@ public class CustomList extends ArrayAdapter<City> {
             }
         }
     }
+
+    public boolean hasCity(String name, String province) {
+        return false;
+    }
 }
