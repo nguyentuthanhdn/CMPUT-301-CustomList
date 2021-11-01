@@ -12,7 +12,9 @@ import androidx.annotation.Nullable;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CustomList extends ArrayAdapter<City> {
 
@@ -73,6 +75,21 @@ public class CustomList extends ArrayAdapter<City> {
     }
 
     public int countCity() {
-        return 0;
+        int size = getCount();
+        int count = 0;
+        String cityNames[] = new String[size];
+        String cityProvinces[] = new String[size];
+
+        for (int i = 0; i< cities.size(); i++) {
+            String name = cities.get(i).getCityName();
+            String province = cities.get(i).getProvinceName();
+
+            if (!Arrays.asList(cityNames).contains(name) && !Arrays.asList(cityProvinces).contains(province)) {
+                count++;
+                cityNames[i] = name;
+                cityProvinces[i] = province;
+            }
+        }
+        return count;
     }
 }
